@@ -28,7 +28,14 @@
       mediaUrl = (mediaUrl.Contains("://") ? mediaUrl : StringUtil.EnsurePrefix('/', mediaUrl));
       if (addTimestamp)
       {
-        mediaUrl = mediaUrl + "?t=" + item[Sitecore.XA.Foundation.SitecoreExtensions.Templates.Statistics.Fields.__Created];
+        if (mediaUrl.Contains("?"))
+        {
+          mediaUrl = mediaUrl + "&t=" + item[Sitecore.XA.Foundation.SitecoreExtensions.Templates.Statistics.Fields.__Created];
+        }
+        else
+        {
+          mediaUrl = mediaUrl + "?t=" + item[Sitecore.XA.Foundation.SitecoreExtensions.Templates.Statistics.Fields.__Created];
+        }
       }
       return mediaUrl;
     }
